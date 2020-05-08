@@ -22,6 +22,17 @@ General class diagram can be found in Chimera_class_diagram.jpg.
 -- laravelcollective/html
 - Postgresql 10
 
+- *Additional to be installed
+- monolog/monolog suggests installing php-console/php-console (Allow sending log messages to Google Chrome)
+- laravel/framework suggests installing symfony/filesystem (Required to create relative storage directory symbolic links (^5.0).)
+- phpunit/phpunit suggests installing ext-soap (*)
+- phpunit/phpunit suggests installing ext-xdebug (*)
+
+Installation after retreiving the whole project, requires
+
+- composer update --dev
+- npm install && npm run dev
+- php artisan ui vue --auth
 
 ## Security Vulnerabilities
 

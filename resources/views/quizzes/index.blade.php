@@ -1,7 +1,8 @@
 
-<body>
+@extends('layouts.app')
+
+@section('content')
     <div class="quizzes center sans-serif">
-    
         <h1>Quizzes</h1>
         <div class="links">
             <a href="/topics">ListTopics</a> 
@@ -15,4 +16,4 @@
             </div> 
         @endforeach
     </div>
-</body>
+@endsection

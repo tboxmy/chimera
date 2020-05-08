@@ -1,5 +1,7 @@
 
-<body>
+@extends('layouts.app')
+
+@section('content')
     <div class="topics center sans-serif">
     @php
     $current_topic=-1;
@@ -19,4 +21,4 @@
             </div> 
         @endforeach
     </div>
-</body>
+@endsection

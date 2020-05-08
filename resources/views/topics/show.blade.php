@@ -1,5 +1,7 @@
 
-<body>
+@extends('layouts.app')
+
+@section('content')
     <div class="topics center sans-serif">
         <h1>{{ $topic->name }}</h1>
         @foreach($questions as $question)          
@@ -12,4 +14,4 @@
             </div> 
         @endforeach
     </div>
-</body>
+@endsection

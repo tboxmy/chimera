@@ -28,3 +28,6 @@ Route::post('quizzes/{quiz}/update_topic', 'QuizController@updateTopic')->name('
 // Route::get('quizzes', 'QuizController@index');
 // Route::get('quizzes/{quiz}', 'QuizController@show')->name('quizzes.show');
 // Route::get('quizzes/create', 'QuizController@create');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

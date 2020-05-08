@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
     <div class="topics center sans-serif">    
         <h1>{{$quiz->name}}({{ $quiz->id }})</h1>
         <p>{{ $quiz->description }}</p>
@@ -15,3 +18,4 @@
         
         </ol>    
     </div>
+@endsection    

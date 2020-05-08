@@ -1,4 +1,6 @@
+@extends('layouts.app')
 
+@section('content')
 
     <div class="topics center sans-serif">    
         <h1>Question: {{ $question->name }}</h1>
@@ -18,4 +20,4 @@
         </ol>    
     </div>
 
-
+@endsection
