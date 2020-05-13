@@ -34,13 +34,10 @@
             </div> 
         @endforeach
     </div>
-<<<<<<< HEAD
 
                 </div>
             </div>
         </div>
     </div>
 </div>
-=======
->>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
 @endsection
