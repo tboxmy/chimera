@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<<<<<<< HEAD
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -13,6 +14,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
+=======
+<div class="row">
+ <div class="col-sm-8 offset-sm-2">
+    <h1 class="display-3">Add a quiz</h1>
+  <div>
+>>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
     @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
@@ -44,4 +51,8 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
 @endsection

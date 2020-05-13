@@ -49940,8 +49940,13 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! D:\virtualbox\chimera-010\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\virtualbox\chimera-010\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! C:\Software\chimera-010\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Software\chimera-010\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
 
 
 /***/ })

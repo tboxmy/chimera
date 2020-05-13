@@ -2,6 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
+<<<<<<< HEAD
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -16,6 +17,8 @@
                     @endif
 
 
+=======
+>>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
     <div class="topics center sans-serif">    
         <h1>{{$quiz->name}}({{ $quiz->id }})</h1>
         <p>{{ $quiz->description }}</p>
@@ -45,6 +48,7 @@
         @endforeach
         @endif
     </div>
+<<<<<<< HEAD
 
 
                 </div>
@@ -52,4 +56,6 @@
         </div>
     </div>
 </div>
+=======
+>>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
 @endsection

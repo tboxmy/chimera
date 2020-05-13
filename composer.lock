@@ -139,6 +139,7 @@
         },
         {
             "name": "doctrine/inflector",
+<<<<<<< HEAD
             "version": "1.4.1",
             "source": {
                 "type": "git",
@@ -149,6 +150,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/inflector/zipball/4111f6853aea6f28b2b1dcfdde83d12dd3d5e6e3",
                 "reference": "4111f6853aea6f28b2b1dcfdde83d12dd3d5e6e3",
+=======
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/inflector.git",
+                "reference": "ab5de36233a1995f9c776c741b803eb8207aebef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/ab5de36233a1995f9c776c741b803eb8207aebef",
+                "reference": "ab5de36233a1995f9c776c741b803eb8207aebef",
+>>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
                 "shasum": ""
             },
             "require": {
@@ -213,7 +226,11 @@
                 "uppercase",
                 "words"
             ],
+<<<<<<< HEAD
             "time": "2020-05-09T15:09:09+00:00"
+=======
+            "time": "2020-05-06T11:01:57+00:00"
+>>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
         },
         {
             "name": "doctrine/lexer",
