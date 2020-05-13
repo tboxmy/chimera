@@ -21,7 +21,23 @@ General class diagram can be found in Chimera_class_diagram.jpg.
 - [Laravel 6.x](https://laravel.com/docs/)
 -- laravelcollective/html
 - Postgresql 10
+- node 12.5
+- npm 6.9
 
+## Installation from source:
+
+Ensure the above environment is setup, retrieve the source, then run
+
+composer update
+php artisan ui vue --auth
+npm install && npm run dev
+
+php artisan migrate:refresh
+php artisan db:seed --class=TopicsTableSeeder
+php artisan db:seed --class=QuestionsTableSeeder
+Start the application
+
+From the web browser, http://localhost 
 
 ## Security Vulnerabilities
 

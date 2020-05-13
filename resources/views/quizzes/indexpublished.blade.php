@@ -15,21 +15,18 @@
                     @endif
     <div class="quizzes center sans-serif">
     
-        <h1><a href="/">Quizzes</a></h1>
+        <h1>Quizzes</h1>
+        @if(Auth::user()->isAdmin() )
         <div class="links">
             <a href="/topics">ListTopics</a> 
-            <a href="/quizzes/create">Add Quizzes</a>  
+            <a href="{{route('quizzes.index') }}">Edit Quizzes</a>  
         </div>
+        @endif
+        
         @foreach($quizzes as $quiz)
             <div >
                 <h2><a href="{{route('quizzes.show',$quiz)}}">{{ $quiz->id }}. 
                 {{$quiz->name }}</a></h2>
-                @if ($quiz->publish_start != null)
-                <div>
-                Publish: {{ $quiz->publish_start->format('d-m-Y') }}
-                </div>
-                @endif  
-                
                 <div> {{ $quiz->description }}</div>
             </div> 
         @endforeach

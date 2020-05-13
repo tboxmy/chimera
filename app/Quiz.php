@@ -9,8 +9,16 @@ class Quiz extends Model
 {
     //
     protected $fillable = [
-        'name', 'description', 'update_at',
+        'name', 'description', 'publish_start', 'update_at',
     ];
+    protected $casts = [
+        'publish_start' => 'date'
+    ];
+    protected $publish_start = ['date'];
+    
+    // protected $casts = [
+    //     'publish_start' => 'date:hh:mm'
+    // ];
     public function topics()
     {
         return $this->belongsToMany('App\Topic')->withTimestamps();;

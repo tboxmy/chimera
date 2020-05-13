@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Quiz;
 use App\Topic;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class QuizController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +24,16 @@ class QuizController extends Controller
         //
         $quizzes = Quiz::all();
         //$questions = Question::all()->groupBy('topic_id');
-        return view('quizzes/index',compact('quizzes'));
+        return view('quizzes.index',compact('quizzes'));
+    }
+
+    public function indexPublished()
+    {
+        //
+        $currentDate=Carbon::now(); // Current date
+        $quizzes = Quiz::where('publish_start','<=', $currentDate);
+        //$questions = Question::all()->groupBy('topic_id');
+        return view('quizzes.indexpublished',compact('quizzes'));
     }
 
     /**
@@ -48,7 +63,8 @@ class QuizController extends Controller
         ]);
         $quiz = new Quiz([
             'name'=>$request->get('name'),
-            'description'=>$request->get('description'),            
+            'description'=>$request->get('description'),
+            'publish_start'=>$request->get('publish_start'),
         ]);
         $quiz->save();
         return redirect('/quizzes/')->with('success','Quiz Saved');
@@ -82,6 +98,9 @@ class QuizController extends Controller
     public function edit(Quiz $quiz)
     {
         //
+        $tempQuiz = $quiz;
+        $quiz = Quiz::findOrFail($tempQuiz->id);
+        return view('quizzes.edit', compact('quiz'));
     }
 
     public function editTopic(Quiz $quiz)
@@ -100,9 +119,40 @@ class QuizController extends Controller
      * @param  \App\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Quiz $quiz)
+    public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'name'=>'required',
+            'description'=>'required'            
+        ]);
+        $quiz = Quiz::where('id', $id)->first();
+        $quiz->name=$request->get('name');
+        $quiz->description=$request->get('description');
+        $publish_status=$request->get('published');
+        echo "before update ".$id;
+        
+        if($publish_status == "no" && $quiz->publish_start != null){
+            //Update if currently is published
+            $quiz->publish_start = null;   
+         
+        } else if($publish_status == "yes"){
+            // Update if currently published
+            if($request->get('publish_date') == null){
+                // do nothing
+            } else {
+                $quiz->publish_start = $request->get('publish_date');
+            }
+
+        // } else {
+        //     echo "Nothing to do - ".$publish_status.", ";
+        //     // if( $quiz->publish_start == null)
+        //     //    $quiz->publish_start=null;
+        }
+
+        // Quiz::whereId($id)->update($quiz);
+        $quiz->update();      
+        return redirect('quizzes')->with('success','Quiz Saved');
         
     }
 
