@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-<<<<<<< HEAD
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -14,16 +13,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if(session()->get('success'))
+                    <div class="alert alert-success">
+                    {{ session()->get('success') }}  
+                    </div>
+                    @endif
     <div class="quizzes center sans-serif">
     
         <h1><a href="/">Quizzes</a></h1>
-=======
-@extends('layouts.app')
-
-@section('content')
-    <div class="quizzes center sans-serif">
-        <h1>Quizzes</h1>
->>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
         <div class="links">
             <a href="/topics">ListTopics</a> 
             <a href="/quizzes/create">Add Quizzes</a>  
@@ -42,13 +39,10 @@
             </div> 
         @endforeach
     </div>
-<<<<<<< HEAD
 
                 </div>
             </div>
         </div>
     </div>
 </div>
-=======
->>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
 @endsection

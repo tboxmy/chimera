@@ -22,7 +22,6 @@ Route::get('topics/{topic}', 'TopicController@show');
 Route::get('questions/{question}', 'QuestionController@show')->name('questions.show');
 Route::post('questions/myanswer', 'QuestionController@storeAnswer')->name('questions.storeAnswer');
 
-<<<<<<< HEAD
 Route::get('/',  'QuizController@indexPublished');
 
 Route::group(['middleware' => ['admin']], function () {
@@ -36,14 +35,14 @@ Route::group(['middleware' => ['admin']], function () {
     // Route::get('quizzes/create', 'QuizController@create');
 });
 
-=======
-Route::resource('quizzes', 'QuizController');
-Route::get('quizzes/{quiz}/show_topic', 'QuizController@editTopic')->name('quizzes.showTopic');
-Route::post('quizzes/{quiz}/update_topic', 'QuizController@updateTopic')->name('quizzes.updateTopic');
+
+// Route::resource('quizzes', 'QuizController');
+// Route::get('quizzes/{quiz}/show_topic', 'QuizController@editTopic')->name('quizzes.showTopic');
+// Route::post('quizzes/{quiz}/update_topic', 'QuizController@updateTopic')->name('quizzes.updateTopic');
 // Route::get('quizzes', 'QuizController@index');
 // Route::get('quizzes/{quiz}', 'QuizController@show')->name('quizzes.show');
 // Route::get('quizzes/create', 'QuizController@create');
->>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -2,7 +2,6 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -16,8 +15,6 @@
                         </div>
                     @endif
 
-=======
->>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
     <div class="topics center sans-serif">
     @php
     $current_topic=-1;

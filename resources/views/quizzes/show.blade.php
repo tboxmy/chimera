@@ -2,7 +2,6 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -17,10 +16,30 @@
                     @endif
 
 
-=======
->>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
     <div class="topics center sans-serif">    
         <h1>{{$quiz->name}}({{ $quiz->id }})</h1>
+        <table><tr><td>
+        {{ Form::open(array('route' => array('quizzes.index'), 'method'=>'get')) }}        
+        {!! Form::token() !!}               
+        
+        {{ Form::button('<span class="glyphicon glyphicon-search">Back</span>',
+    array(
+        'class'=>'btn btn-warning', 
+        'value'=>'quizzes',
+        'type'=>'submit')) }}        
+        {{ Form::close() }}
+        </td><td>
+        {{ Form::open(array('route' => array('quizzes.destroy',$quiz), 'method'=>'delete')) }}        
+        {!! Form::token() !!}               
+        {{ Form::hidden('delete','true')}} 
+        {{ Form::button('<span class="glyphicon glyphicon-search">Delete</span>',
+    array(
+        'class'=>'btn btn-warning', 
+        'value'=>'delete',
+        'type'=>'submit')) }}        
+        {{ Form::close() }}        
+        </td></tr>
+        </table>
         <p>{{ $quiz->description }}</p>
         @if ($quiz->publish_start != null)
             Publish: {{ $quiz->publish_start->format('d-m-Y') }}
@@ -48,7 +67,6 @@
         @endforeach
         @endif
     </div>
-<<<<<<< HEAD
 
 
                 </div>
@@ -56,6 +74,4 @@
         </div>
     </div>
 </div>
-=======
->>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
 @endsection

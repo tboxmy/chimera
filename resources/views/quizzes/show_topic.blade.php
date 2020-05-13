@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 @extends('layouts.app')
 
@@ -16,11 +15,6 @@
                         </div>
                     @endif
 
-=======
-@extends('layouts.app')
-
-@section('content')
->>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
     <div class="topics center sans-serif">    
         <h1>{{$quiz->name}}({{ $quiz->id }})</h1>
         <p>{{ $quiz->description }}</p>
@@ -38,7 +32,6 @@
         
         </ol>    
     </div>
-<<<<<<< HEAD
 
                 </div>
             </div>
@@ -46,6 +39,3 @@
     </div>
 </div>
 @endsection
-=======
-@endsection    
->>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349

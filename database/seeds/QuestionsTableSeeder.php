@@ -36,7 +36,7 @@ class QuestionsTableSeeder extends Seeder
         
         $numberOfQuestions = 4;
         for ($i = 0; $i < ($n/2); $i++) {
-            $ans=$faker->numberBetween(0,$numberOfQuestions);
+            $ans=$faker->numberBetween(0,$numberOfQuestions - 1);
             for ($j = 0; $j < $numberOfQuestions; $j++) {
                 $value = 0;
                 if($j == $ans) $value=1;
