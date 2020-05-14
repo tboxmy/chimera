@@ -15,7 +15,7 @@
                     @endif
     <div class="quizzes center sans-serif">
     
-        <h1>Quizzes</h1>
+        <h1>Available Quizzes</h1>
         @if(Auth::user()->isAdmin() )
         <div class="links">
             <a href="/topics">ListTopics</a> 
@@ -25,6 +25,7 @@
         
         @foreach($quizzes as $quiz)
             <div >
+            
                 <h2><a href="{{route('quizzes.show',$quiz)}}">{{ $quiz->id }}. 
                 {{$quiz->name }}</a></h2>
                 <div> {{ $quiz->description }}</div>

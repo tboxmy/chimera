@@ -18,7 +18,8 @@
 
     <div class="topics center sans-serif">    
         <h1>{{$quiz->name}}({{ $quiz->id }})</h1>
-        <table><tr><td>
+    @if(Auth::user()->isAdmin() )
+        <table><tr><td>        
         {{ Form::open(array('route' => array('quizzes.index'), 'method'=>'get')) }}        
         {!! Form::token() !!}               
         
@@ -40,19 +41,22 @@
         {{ Form::close() }}        
         </td></tr>
         </table>
+        
         <p>{{ $quiz->description }}</p>
         @if ($quiz->publish_start != null)
             Publish: {{ $quiz->publish_start->format('d-m-Y') }}
         @endif
         <p>{{ $quiz->update_at }}</p> 
         <a href="{{ route('quizzes.edit', $quiz) }}">Edit</a> |
-        <a href="{{ route('quizzes.showTopic',$quiz) }}">Assign Topic</a>
+        <a href="{{ route('quizzes.showTopic',$quiz) }}">Assign Topic</a> 
+    @endif  
         @if(count($topics) < 1)
             <p>No Topic selected.</p>
         @else
-        
+      
         @foreach( $topics as $topic)
         <p><a href="{{ route('topics.show',$topic) }}">{{ $topic->name  }}</a> - {{ $topic->description }}
+        @if(Auth::user()->isAdmin() )
         {{ Form::open(array('route' => array('quizzes.updateTopic',$quiz), 'method'=>'post')) }}
         {!! Form::token() !!} 
         {{ Form::hidden('topic_id',$topic->id)}}            
@@ -63,6 +67,7 @@
         'value'=>'delete',
         'type'=>'submit')) }}        
         {{ Form::close() }}
+        @endif
         </p>
         @endforeach
         @endif

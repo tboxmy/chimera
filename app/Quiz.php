@@ -9,7 +9,7 @@ class Quiz extends Model
 {
     //
     protected $fillable = [
-        'name', 'description', 'publish_start', 'update_at',
+        'id','name', 'description', 'publish_start', 'update_at',
     ];
     protected $casts = [
         'publish_start' => 'date'

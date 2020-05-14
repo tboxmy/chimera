@@ -30,8 +30,9 @@ class QuizController extends Controller
     public function indexPublished()
     {
         //
-        $currentDate=Carbon::now(); // Current date
-        $quizzes = Quiz::where('publish_start','<=', $currentDate);
+        $currentDate=Carbon::now()->format('Y-m-d'); // Current date
+        $quizzes = Quiz::whereDate('publish_start','<=', $currentDate )->get();                
+       
         //$questions = Question::all()->groupBy('topic_id');
         return view('quizzes.indexpublished',compact('quizzes'));
     }
