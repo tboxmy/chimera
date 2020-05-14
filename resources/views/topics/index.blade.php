@@ -14,7 +14,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                
     <div class="topics center sans-serif">
     @php
     $current_topic=-1;
