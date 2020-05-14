@@ -24,7 +24,6 @@ General class diagram can be found in Chimera_class_diagram.jpg.
 - node 12.5
 - npm 6.9
 
-<<<<<<< HEAD
 ## Installation from source:
 
 Ensure the above environment is setup, retrieve the source, then run
@@ -39,19 +38,6 @@ php artisan db:seed --class=QuestionsTableSeeder
 Start the application
 
 From the web browser, http://localhost 
-=======
-- *Additional to be installed
-- monolog/monolog suggests installing php-console/php-console (Allow sending log messages to Google Chrome)
-- laravel/framework suggests installing symfony/filesystem (Required to create relative storage directory symbolic links (^5.0).)
-- phpunit/phpunit suggests installing ext-soap (*)
-- phpunit/phpunit suggests installing ext-xdebug (*)
-
-Installation after retreiving the whole project, requires
-
-- composer update --dev
-- npm install && npm run dev
-- php artisan ui vue --auth
->>>>>>> 1f51a1505299efe80039361bac86d926dd1a1349
 
 ## Security Vulnerabilities
 
