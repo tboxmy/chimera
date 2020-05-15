@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Topic;
 use App\Question;
+use App\AnswerMultiplechoice;
+use App\AnswerTruefalse;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -58,9 +60,24 @@ class TopicController extends Controller
     public function show(Topic $topic)
     {
         //
-        $questions = Question::where('topic_id','=',$topic->id)->get();     
-        return view('topics.show',compact('topic','questions'));
+        $questions = Question::where('topic_id','=',$topic->id)->get();             
+        return view('topics.show',compact('topic','questions'));        
     }
+    public function showPlay(Topic $topic, $current)
+    {
+        //
+        $questions = Question::where('topic_id','=',$topic->id)->get();
+        $question = $questions[$current];
+        if($question->type == 'truefalse'){
+            $answers=AnswerTruefalse::where('question_id','=',$question->id)->get();
+        } else{
+            // Default question type is multiple choice.
+            $answers=AnswerMultiplechoice::where('question_id','=',$question->id)->get();
+        }
+        // return view('topics.show',compact('topic','questions'));
+        return view('topics.showPlay',compact('topic','questions','answers','current'));
+    }
+       
 
     /**
      * Show the form for editing the specified resource.

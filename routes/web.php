@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/',  'HomeController@index');
 Route::get('topics', 'TopicController@index')->name('start');
 Route::get('topics/{topic}', 'TopicController@show')->name('topics.show');
+Route::get('topics/play/{topic}/{current}', 'TopicController@showPlay')->name('topics.play');
 Route::get('questions/{question}', 'QuestionController@show')->name('questions.show');
 Route::post('questions/myanswer', 'QuestionController@storeAnswer')->name('questions.storeAnswer');
 
