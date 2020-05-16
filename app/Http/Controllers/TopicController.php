@@ -91,8 +91,9 @@ class TopicController extends Controller
         }
 
         $this->updateUserResults(Auth::user()->id, $quiz_id, $question->id, $answer->is_answer);
+        $score=$this->calcQuizScore(Auth::user()->id, $quiz_id);
         return view('topics.showPlayResult', compact('quiz_id', 'question', 'answers', 'result', 
-        'topic','answer_id','next'));
+        'topic','answer_id','next','score'));
     }
 
     public function updateUserResults($user, $quiz, $question, $result){
@@ -117,9 +118,17 @@ class TopicController extends Controller
             // $user->quizzes()->attach($quiz, ['question_id'=> $question, 'result'=>$result]);
             // $user->quizzes()->sync($quiz, ['question_id'=>$question, 'result'=>$result]);
         }
+    }
+
+    public function calcQuizScore($user, $quiz){
+        $score = 0;
+        $user = User::find($user);
+        foreach ( $user->quizzes as $quiz){
+            // $quiz->pivot->question_id;
+            $score = $score + $quiz->pivot->result;
+        }
         
-        
-        // $user->save();   
+        return $score;
     }
 
     /**
@@ -147,7 +156,8 @@ class TopicController extends Controller
         }
         // return view('topics.show',compact('topic','questions'));
         $quiz = Quiz::find($quiz_id);
-        return view('topics.showPlay',compact('quiz', 'topic','questions','answers','current'));
+        $score=$this->calcQuizScore(Auth::user()->id, $quiz_id);
+        return view('topics.showPlay',compact('quiz', 'topic','questions','answers','current', 'score'));
     }
        
 

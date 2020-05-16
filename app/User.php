@@ -49,4 +49,6 @@ class User extends Authenticatable
         ->withPivot( 'question_id', 'result')
         ->withTimestamps();;
     }
+
+    
 }
