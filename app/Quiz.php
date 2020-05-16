@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Topic;
+use App\User;
 
 class Quiz extends Model
 {
@@ -24,5 +25,11 @@ class Quiz extends Model
         return $this->belongsToMany('App\Topic')->withTimestamps();;
         // return $this->belongsToMany('Topic::class');
         // return $this->belongsToMany('Topic','quiz_topic','quiz_id','topic_id');
+    }
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'users_quizzes')
+        ->withPivot( 'question_id', 'result')
+        ->withTimestamps();;
     }
 }

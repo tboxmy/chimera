@@ -30,6 +30,7 @@
             <span class="text-muted">({{ $question->id }})</span></h2>
             {{ Form::open(array('route' => 'topics.storeAnswer', 'method'=>'post')) }}
         {!! Form::token() !!}        
+        {{ Form::hidden('quiz_id',$quiz->id)}}
         {{ Form::hidden('question_id',$question->id)}}
         {{ Form::hidden('topic_id', $topic->id) }}
         {{ Form::hidden('current', $current) }}

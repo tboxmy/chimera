@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Quiz;
+use App\Question;
 
 class User extends Authenticatable
 {
@@ -39,5 +41,12 @@ class User extends Authenticatable
 
     function isAdmin(){
         return $this->is_admin;
+    }
+
+    public function quizzes()
+    {
+        return $this->belongsToMany('App\Quiz', 'users_quizzes', )
+        ->withPivot( 'question_id', 'result')
+        ->withTimestamps();;
     }
 }

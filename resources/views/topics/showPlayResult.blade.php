@@ -30,7 +30,7 @@
                     <mark>({{ $result }})</mark> @endif</p>
                     @endforeach
                     @if( $next > 0)
-                        <a href="{{ route('topics.play',['topic'=>$topic, 'current'=>$next]) }}">Continue</a>
+                        <a href="{{ route('topics.play',['quiz_id'=>$quiz_id, 'topic'=>$topic, 'current'=>$next]) }}">Continue</a>
                     @else
                         End of quiz.
                     @endif

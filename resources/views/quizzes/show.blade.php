@@ -56,7 +56,7 @@
       
         @foreach( $topics as $topic)
         <p><a href="{{ route('topics.show',$topic) }}">{{ $topic->name  }}</a> - {{ $topic->description }}
-        <a href="{{ route('topics.play',['topic'=>$topic, 'current'=>0]) }}">Play</a>
+        <a href="{{ route('topics.play',['quiz_id'=>$quiz->id, 'topic'=>$topic, 'current'=>0]) }}">Play</a>
         @if(Auth::user()->isAdmin() )
         {{ Form::open(array('route' => array('quizzes.updateTopic',$quiz), 'method'=>'post')) }}
         {!! Form::token() !!} 
