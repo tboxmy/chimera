@@ -19,7 +19,7 @@ General class diagram can be found in Chimera_class_diagram.jpg.
 
 - PHP 7.3
 - [Laravel 6.x](https://laravel.com/docs/)
--- laravelcollective/html
+- Composer
 - Postgresql 10
 - node 12.5
 - npm 6.9

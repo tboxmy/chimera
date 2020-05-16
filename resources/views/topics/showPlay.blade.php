@@ -28,9 +28,11 @@
         <div class="col-md-7">
             <h2 class="featurette-heading">{{ $question->name }}
             <span class="text-muted">({{ $question->id }})</span></h2>
-            {{ Form::open(array('route' => 'questions.storeAnswer', 'method'=>'post')) }}
+            {{ Form::open(array('route' => 'topics.storeAnswer', 'method'=>'post')) }}
         {!! Form::token() !!}        
         {{ Form::hidden('question_id',$question->id)}}
+        {{ Form::hidden('topic_id', $topic->id) }}
+        {{ Form::hidden('current', $current) }}
         @foreach($answers as $answer)            
         <p class="lead">{{ Form::radio('answer_id', $answer->id, false)}}  {{ $answer->name }}</p>
         @endforeach

@@ -51,6 +51,44 @@ class TopicController extends Controller
         //
     }
 
+    public function storeAnswer(Request $request)
+    {
+
+        // Do Laravel validation process if data fails.
+        $validatedData = $request->validate([
+            'answer_id' => 'required',
+        ]);        
+        
+        $question=Question::find($request->get('question_id'));
+        $answer_id=$request->get('answer_id');
+        if( $question->type == 'truefalse' )
+            $answer=AnswerTruefalse::find($answer_id);
+        else        // default
+            $answer=AnswerMultiplechoice::find($answer_id);
+        if($answer->is_answer == 1)
+            $result = "Correct";
+        else
+            $result = "Wrong";        
+        $topic = Topic::find($request->get('topic_id'));
+        if($question->type == 'truefalse'){
+            $answers=AnswerTruefalse::where('question_id','=',$question->id)->get();
+        } else{
+            // Default question type is multiple choice.
+            $answers=AnswerMultiplechoice::where('question_id','=',$question->id)->get();
+        }
+        $questions = Question::where('topic_id','=',$topic->id)->get(); 
+        $current = $request->get('current');
+        
+        if ($current+1 < count($questions) ){
+            $next = ($request->get('current')) + 1;
+        } else {
+            $next = -1; //end of quiz;
+        }   
+        
+        return view('topics.showPlayResult', compact('question', 'answers', 'result', 
+        'topic','answer_id','next'));
+    }
+
     /**
      * Display the specified resource.
      *
