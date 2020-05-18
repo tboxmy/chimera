@@ -84,6 +84,8 @@ class TopicController extends Controller
         $questions = Question::where('topic_id','=',$topic->id)->get(); 
         $current = $request->get('current');
         $quiz_id = $request->get('quiz_id');
+
+        $totalQuestions = count ($questions);
         if( $questions != null){
             if ($current+1 < count($questions) ){
             $next = ($request->get('current')) + 1;
@@ -94,8 +96,8 @@ class TopicController extends Controller
 
         $this->updateUserResults(Auth::user()->id, $quiz_id, $question->id, $answer->is_answer);
         $score=$this->calcQuizScore(Auth::user()->id, $quiz_id);
-        return view('topics.showPlayResult', compact('quiz_id', 'question', 'answers', 'result', 
-        'topic','answer_id','next','score'));
+        return view('topics.showPlayResult', compact('quiz_id', 'totalQuestions', 'question', 'answers', 'result', 
+        'topic','answer_id','next','score','current'));
     }
 
     public function updateUserResults($user, $quiz, $question, $result){
@@ -150,6 +152,7 @@ class TopicController extends Controller
     {
         //
         $questions = Question::where('topic_id','=',$topic->id)->get();
+        $totalQuestions = count($questions);
         $question = $questions[$current];
         if($question->type == 'truefalse'){
             $answers=AnswerTruefalse::where('question_id','=',$question->id)->get();
@@ -163,10 +166,10 @@ class TopicController extends Controller
         $user = Auth::user();
         
         if( $current == 0 && $user->quizzes()->count() > 0){
-            return view('topics.showPlay',compact('quiz', 'topic','questions','answers','current', 'score'))
+            return view('topics.showPlay',compact('quiz', 'topic','totalQuestions','questions','answers','current', 'score'))
             ->with('popup', 'open');
         }
-        return view('topics.showPlay',compact('quiz', 'topic','questions','answers','current', 'score'));
+        return view('topics.showPlay',compact('quiz', 'topic','totalQuestions','questions','answers','current', 'score'));
     }
        
     public function resetUserQuiz(Request $request)

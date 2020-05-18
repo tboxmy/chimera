@@ -36,10 +36,16 @@
                 @else
                     <!-- Authenticated user view -->
                 <div class="nav navbar-nav ml-auto w-50 justify-content-end" >
-                <button type="button" >
+                @if ( isset($current) && isset($totalQuestions) )
+                <button type="button" >                    
+                <span class="icon-bar">{{ $current + 1 }} / {{ $totalQuestions }}</span>
+                </button> 
+                <button type="button" >                    
                 <span class="icon-bar">Score:</span>
                 <span class="icon-bar">{{ $score ?? 'None' }}   </span>
                 </button> 
+                
+                @endif
                 </div>
                 
                 @endif
