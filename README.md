@@ -31,13 +31,16 @@ Ensure the above environment is setup, retrieve the source, then run
 composer update
 php artisan ui vue --auth
 npm install && npm run dev
-
+php artisan cache:clear
 php artisan migrate:refresh
 php artisan db:seed --class=TopicsTableSeeder
 php artisan db:seed --class=QuestionsTableSeeder
 Start the application
 
 From the web browser, http://localhost 
+
+Clear view cache with
+php artisan config:cache
 
 ## Security Vulnerabilities
 

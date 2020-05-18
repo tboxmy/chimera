@@ -21,6 +21,7 @@ Route::get('topics', 'TopicController@index')->name('start');
 Route::get('topics/{topic}', 'TopicController@show')->name('topics.show');
 Route::get('topics/play/{quiz_id}/{topic}/{current}', 'TopicController@showPlay')->name('topics.play');
 Route::post('topics/play/myanswer', 'TopicController@storeAnswer')->name('topics.storeAnswer');
+Route::post('topics/play/resetUserQuiz', 'TopicController@resetUserQuiz')->name('topics.resetUserQuiz');
 
 Route::get('questions/{question}', 'QuestionController@show')->name('questions.show');
 Route::post('questions/myanswer', 'QuestionController@storeAnswer')->name('questions.storeAnswer');

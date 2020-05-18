@@ -10,6 +10,8 @@ use App\AnswerTruefalse;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Response;
 
 class TopicController extends Controller
 {
@@ -158,13 +160,30 @@ class TopicController extends Controller
         // return view('topics.show',compact('topic','questions'));
         $quiz = Quiz::find($quiz_id);
         $score=$this->calcQuizScore(Auth::user()->id, $quiz_id);
-        if( $current == 0){
+        $user = Auth::user();
+        
+        if( $current == 0 && $user->quizzes()->count() > 0){
             return view('topics.showPlay',compact('quiz', 'topic','questions','answers','current', 'score'))
             ->with('popup', 'open');
         }
         return view('topics.showPlay',compact('quiz', 'topic','questions','answers','current', 'score'));
     }
        
+    public function resetUserQuiz(Request $request)
+    {
+        // reset
+        Log::info( 'Quiz value='.$request->quiz);
+        Log::info('resetUserQuiz called='.$request);
+        $quiz_id=$request->quiz;
+        if(Auth::user()){            
+            $user = User::find(Auth::user()->id);
+            $quiz = Quiz::find($quiz_id);
+            $result = $user->quizzes()->detach($quiz_id);
+        }
+        
+        //return Response($data);
+        return response()->json(array('quiz'=> $quiz->name, 'result'=>$result), 200);
+    }
 
     /**
      * Show the form for editing the specified resource.

@@ -21,9 +21,7 @@
                 @endphp
 
                 @if ( isset($popup) )
-                @php 
-                echo "popup called";                 
-                @endphp
+                
                 <!-- see mymodal.js -->
                 <div class="myModal" id="myModal" tabindex="-1">
     <div id="myModalview" class="modal-dialog">
