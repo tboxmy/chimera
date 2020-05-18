@@ -17,6 +17,7 @@ class CreateQuizzesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
+            $table->integer('position')->unsigned()->default(1); // position to display
             $table->timestamp('publish_start')->nullable();
             $table->timestamps();
         });

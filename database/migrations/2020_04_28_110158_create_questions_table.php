@@ -19,6 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('type');
+            $table->integer('position')->unsigned()->default(1); // position to display
             $table->timestamps();
             $table->foreign('topic_id')->references('id')->on('topics')->cascade();
         });

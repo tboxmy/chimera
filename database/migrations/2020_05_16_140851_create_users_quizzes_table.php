@@ -21,9 +21,9 @@ class CreateUsersQuizzesTable extends Migration
             $table->integer('result');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('quiz_id')->references('id')->on('quizzes');
-            $table->foreign('question_id')->references('id')->on('questions');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
         });
     }
 
@@ -34,6 +34,8 @@ class CreateUsersQuizzesTable extends Migration
      */
     public function down()
     {        
-        Schema::dropIfExists('users_quizzes')->cascade();
+        Schema::dropIfExists('users_quizzes');
+        
+        
     }
 }

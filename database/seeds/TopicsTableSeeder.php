@@ -16,11 +16,13 @@ class TopicsTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
         Topic::create([
             'name' => 'General 01',
-            'description' => $faker->text,            
+            'description' => $faker->text,
+            'position'    => 1,
         ]);
         Topic::create([
             'name' => 'Science 01',
             'description' => $faker->text,            
+            'position'    => 2,
         ]);
     }
 }

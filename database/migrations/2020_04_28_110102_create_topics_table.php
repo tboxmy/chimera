@@ -17,6 +17,7 @@ class CreateTopicsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
+            $table->integer('position')->unsigned()->default(1); // position to display
             $table->timestamps();
         });
     }
