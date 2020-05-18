@@ -19,6 +19,35 @@
                 @php                 
                 $question = $questions[$current];                
                 @endphp
+
+                @if ( isset($popup) )
+                @php 
+                echo "popup called";                 
+                @endphp
+                <!-- see mymodal.js -->
+                <div class="myModal" id="myModal" tabindex="-1">
+    <div id="myModalview" class="modal-dialog">
+        <div class="modal-content" id="modalforreset">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>                
+            </div>
+            <div class="modal-body">
+                <p>Do you want to Reset score before proceeding?</p>
+                <p class="text-secondary"><small>If agree to reset, your score will be lost.</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="reset-modal" type="button" class="btn btn-primary" data-toggle="modal" data-target="modal">Reset</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+                
+                @else
+                No popup
+                @endif
                 <div >
                 
                 <p>{{ $question->description }}</p>

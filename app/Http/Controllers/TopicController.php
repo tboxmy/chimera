@@ -110,7 +110,8 @@ class TopicController extends Controller
             $user->quizzes()->attach($quiz, ['question_id'=> $question, 'result'=>$result]);
             
         } catch (\Illuminate\Database\QueryException $exception) {
-            echo "Catch=".$exception->getMessage();
+            // echo "Catch=".$exception->getMessage();
+            echo "users_quizzes_pkey=exist";
             // $quiz= Quiz::find($quiz);
             $user->quizzes()->wherePivot('question_id', $question)->updateExistingPivot( 
                 $quiz, ['result'=>$result]);
@@ -157,6 +158,10 @@ class TopicController extends Controller
         // return view('topics.show',compact('topic','questions'));
         $quiz = Quiz::find($quiz_id);
         $score=$this->calcQuizScore(Auth::user()->id, $quiz_id);
+        if( $current == 0){
+            return view('topics.showPlay',compact('quiz', 'topic','questions','answers','current', 'score'))
+            ->with('popup', 'open');
+        }
         return view('topics.showPlay',compact('quiz', 'topic','questions','answers','current', 'score'));
     }
        
