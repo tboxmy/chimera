@@ -8,9 +8,12 @@ use Illuminate\Notifications\Notifiable;
 use App\Quiz;
 use App\Question;
 
+use App\Permissions\HasPermissionsTrait;
+
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasPermissionsTrait;
+    
 
     /**
      * The attributes that are mass assignable.
@@ -49,6 +52,7 @@ class User extends Authenticatable
         ->withPivot( 'question_id', 'result')
         ->withTimestamps();;
     }
+    
 
     
 }
