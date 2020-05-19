@@ -33,7 +33,7 @@ Route::resource('quizzes', 'QuizController');
     Route::get('quizzes/{quiz}/show_topic', 'QuizController@editTopic')->name('quizzes.showTopic');
     Route::post('quizzes/{quiz}/update_topic', 'QuizController@updateTopic')->name('quizzes.updateTopic');
     Route::post('quizzes/{id}/update', 'QuizController@update')->name('quizzes.updatePost');
-    
+Route::get('users/', 'UserController@index');
 Route::group(['middleware' => ['admin']], function () {
     // Route::get('/',  'QuizController@index');
     // Route::resource('quizzes', 'QuizController');
