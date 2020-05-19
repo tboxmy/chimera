@@ -18,7 +18,8 @@
 
     <div class="topics center sans-serif">    
         <h1>{{$quiz->name}}({{ $quiz->id }})</h1>
-    @if(Auth::user()->isAdmin() )
+        @if(Auth::user()->hasRole('teacher'))
+
         <table><tr><td>        
         {{ Form::open(array('route' => array('quizzes.index'), 'method'=>'get')) }}        
         {!! Form::token() !!}               
@@ -41,7 +42,7 @@
         {{ Form::close() }}        
         </td></tr>
         </table>
-        
+        @endif 
         <p>{{ $quiz->description }}</p>
         @if ($quiz->publish_start != null)
             Publish: {{ $quiz->publish_start->format('d-m-Y') }}
@@ -49,7 +50,7 @@
         <p>{{ $quiz->update_at }}</p> 
         <a href="{{ route('quizzes.edit', $quiz) }}">Edit</a> |
         <a href="{{ route('quizzes.showTopic',$quiz) }}">Assign Topic</a> 
-    @endif  
+   
         @if(count($topics) < 1)
             <p>No Topic selected.</p>
         @else
@@ -57,7 +58,7 @@
         @foreach( $topics as $topic)
         <p><a href="{{ route('topics.show',$topic) }}">{{ $topic->name  }}</a> - {{ $topic->description }}
         <a href="{{ route('topics.play',['quiz_id'=>$quiz->id, 'topic'=>$topic, 'current'=>0]) }}">Play</a>
-        @if(Auth::user()->isAdmin() )
+        @if(Auth::user()->hasRole('teacher'))
         {{ Form::open(array('route' => array('quizzes.updateTopic',$quiz), 'method'=>'post')) }}
         {!! Form::token() !!} 
         {{ Form::hidden('topic_id',$topic->id)}}            
