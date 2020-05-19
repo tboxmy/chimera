@@ -29,12 +29,18 @@ Route::post('questions/myanswer', 'QuestionController@storeAnswer')->name('quest
 Route::get('/',  'QuizController@indexPublished');
 
 Route::resource('quizzes', 'QuizController');
-    
-    Route::get('quizzes/{quiz}/show_topic', 'QuizController@editTopic')->name('quizzes.showTopic');
-    Route::post('quizzes/{quiz}/update_topic', 'QuizController@updateTopic')->name('quizzes.updateTopic');
-    Route::post('quizzes/{id}/update', 'QuizController@update')->name('quizzes.updatePost');
-Route::get('users/', 'UserController@index');
+Route::get('quizzes/', 'QuizController@index')->name('quizzes.index');
+Route::get('quizzes/{quiz}/show_topic', 'QuizController@editTopic')->name('quizzes.showTopic');
+Route::post('quizzes/{quiz}/update_topic', 'QuizController@updateTopic')->name('quizzes.updateTopic');
+Route::post('quizzes/{id}/update', 'QuizController@update')->name('quizzes.updatePost');
+
+
+
 Route::group(['middleware' => ['admin']], function () {
+    Route::get('users/', 'UserController@index')->name('users.index');
+Route::get('users/{id}', 'UserController@edit')->name('users.edit');
+Route::put('users/{id}/update', 'UserController@update')->name('users.update');
+Route::delete('users/destroy/{id}', 'UserController@destroy')->name('users.destroy');
     // Route::get('/',  'QuizController@index');
     // Route::resource('quizzes', 'QuizController');
     

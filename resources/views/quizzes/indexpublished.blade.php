@@ -16,12 +16,18 @@
     <div class="quizzes center sans-serif">
     
         <h1>Available Quizzes</h1>
-        @if(Auth::user()->isAdmin() )
+        
+        
         <div class="links">
+            @if(Auth::user()->isAdmin() )
+            <a href="{{route('users.index') }}">Edit Users</a>  
+            @endif
+            @if(Auth::user()->hasRole('teacher'))
             <a href="/topics">ListTopics</a> 
-            <a href="{{route('quizzes.index') }}">Edit Quizzes</a>  
+            <a href="{{route('quizzes.index') }}">Edit Quizzes</a>
+            @endif                      
         </div>
-        @endif
+        
         
         @foreach($quizzes as $quiz)
             <div >

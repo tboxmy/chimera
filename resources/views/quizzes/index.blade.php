@@ -20,11 +20,20 @@
                     @endif
     <div class="quizzes center sans-serif">
     
-        <h1><a href="/">Quizzes</a></h1>
+        <h1><a href="/">Quizzes</a></h1>        
+       
         <div class="links">
+            @if(Auth::user()->isAdmin() )
+            <a href="{{route('users.index') }}">Edit Users</a> 
+            @endif
+            @if(Auth::user()->hasRole('teacher'))
             <a href="/topics">ListTopics</a> 
-            <a href="/quizzes/create">Add Quizzes</a>  
+            <a href="{{route('quizzes.create') }}">Add Quizzes</a>
+            @endif       
+            
         </div>
+        
+        
         @foreach($quizzes as $quiz)
             <div >
                 <h2><a href="{{route('quizzes.show',$quiz)}}">{{ $quiz->id }}. 

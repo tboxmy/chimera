@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 use Hash;
+// Get information for password field
+use Illuminate\Support\Arr;
+
 
 class UserController extends Controller
 {
@@ -84,9 +88,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
-
+        $roles = Role::pluck('name','id')->all();
+        $userRole = $user->roles->pluck('id')->all();
 
         return view('users.edit',compact('user','roles','userRole'));
     }
@@ -108,22 +111,23 @@ class UserController extends Controller
             'roles' => 'required'
         ]);
 
-
         $input = $request->all();
         if(!empty($input['password'])){ 
             $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = array_except($input,array('password'));    
+        }else{             
+            $input = Arr::except($input,array('password'));    
         }
-
 
         $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
-
-
-        $user->assignRole($request->input('roles'));
-
+        
+        $selectedRoles = $request->input('roles');        
+        
+        if( $selectedRoles[0] != null){
+            $user->roles()->sync( $selectedRoles);
+        } else {
+            $user->roles()->detach();
+        }
 
         return redirect()->route('users.index')
                         ->with('success','User updated successfully');

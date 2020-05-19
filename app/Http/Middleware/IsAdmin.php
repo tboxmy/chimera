@@ -21,10 +21,10 @@ class IsAdmin
         if (Auth::user() &&  Auth::user()->is_admin == 1) {
             Log::debug('Tboxmy IsAdmin.handle function. Auth::user=' . Auth::user()->name . ' is_admin');
             return $next($request);
+       } if ( Auth::user() ){
+            Log::debug('Tboxmy IsAdmin.handle function. Auth::user=' . Auth::user()->name . ' NOT admin');
        }
 
-       Log::debug('Tboxmy IsAdmin.handle function. Auth::user=' . Auth::user()->name . ' NOT admin');
-
-       return redirect('topics')->with('error','You do not have admin access');
+       return redirect('/')->with('error','You do not have admin access');
     }
 }

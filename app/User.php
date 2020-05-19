@@ -50,7 +50,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Quiz', 'users_quizzes', )
         ->withPivot( 'question_id', 'result')
-        ->withTimestamps();;
+        ->withTimestamps();
     }
     
 

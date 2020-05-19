@@ -29,13 +29,14 @@
         <button class="btn btn-link" data-toggle="collapse" data-target="#{{ $rowname}}" aria-expanded="true" aria-controls="collapseOne">
         {{ ++$i }}. {{ $user->name }}
         </button>
-        <div class="row-actions">Edit, Show, Delete
+        <div class="row-actions">
+        <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>, 
         <!-- <a class="btn btn-info" href="{--{ route('users.show',$user->id) }}">Show</a>
-       <a class="btn btn-primary" href="{--{ route('users.edit',$user->id) }}">Edit</a> 
-        {--!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+        -->       
+        {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-        {--!! Form::close() !!}
-        -->
+        {!! Form::close() !!}
+        
         </div>
       </h5>
     </div>
