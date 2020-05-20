@@ -30,9 +30,9 @@
         {{ Form::close() }}
           </div>
           <div class="col-md-5">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/mISRTGYtWVs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
           
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image"
-            src="{{ asset('images/a-brain-7.jpg') }}">
           </div>
     </div>
 

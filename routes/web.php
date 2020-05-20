@@ -24,7 +24,10 @@ Route::post('topics/play/myanswer', 'TopicController@storeAnswer')->name('topics
 Route::post('topics/play/resetUserQuiz', 'TopicController@resetUserQuiz')->name('topics.resetUserQuiz');
 
 Route::get('questions/{question}', 'QuestionController@show')->name('questions.show');
+Route::get('questions/{question}/edit', 'QuestionController@edit')->name('questions.edit');
 Route::post('questions/myanswer', 'QuestionController@storeAnswer')->name('questions.storeAnswer');
+Route::get('questions/fetch_image/{id}', 'QuestionController@fetch_image');
+Route::post('questions/{id}/update', 'QuestionController@update')->name('questions.update');
 
 Route::get('/',  'QuizController@indexPublished');
 
@@ -33,7 +36,6 @@ Route::get('quizzes/', 'QuizController@index')->name('quizzes.index');
 Route::get('quizzes/{quiz}/show_topic', 'QuizController@editTopic')->name('quizzes.showTopic');
 Route::post('quizzes/{quiz}/update_topic', 'QuizController@updateTopic')->name('quizzes.updateTopic');
 Route::post('quizzes/{id}/update', 'QuizController@update')->name('quizzes.updatePost');
-
 
 
 Route::group(['middleware' => ['admin']], function () {

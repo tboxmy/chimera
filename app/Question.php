@@ -10,7 +10,7 @@ class Question extends Model
 {
     //
     protected $fillable = [
-        'topic_id', 'name', 'description','type',
+        'topic_id', 'name', 'description','type','embed_link','image',
     ];
     public function AnswerMultiplechoice()
     {

@@ -21,6 +21,7 @@
                 <p><a href="{{route('questions.show',$question)}}">question({{ $question->id }}) {{ $question->name }}</p></a>
                 <p>{{ $question->description }}</p>
                 <p>{{ $question->type }}</p>
+                <p><a href="{{route('questions.edit',$question)}}">Edit</p></a></p>
                 <hr>
                          
                 </div> 

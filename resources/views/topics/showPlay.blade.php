@@ -69,9 +69,12 @@
         {{ Form::close() }}
           </div>
           <div class="col-md-5">
-          
+          @if( $question->image != null )
+            <img src="/questions/fetch_image/{{ $question->id }}"  class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" />
+          @else  
             <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image"
             src="{{ asset('images/a-brain-7.jpg') }}">
+          @endif
           </div>
         </div>
 
