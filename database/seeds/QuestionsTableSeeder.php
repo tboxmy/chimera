@@ -80,7 +80,7 @@ class QuestionsTableSeeder extends Seeder
             array('The tallest building in the world is located in which city?','buildings','default'),
             array('How many hearts does an octopus have?','fauna','default'),
             array('Elephant is a crustacian.','fauna','truefalse'),
-            array('Kuala Lumpur is the capital of Malaysia.','building','default')
+            array('Kuala Lumpur is the capital of Malaysia.','building','truefalse')
         );
 
         $ans = array(
