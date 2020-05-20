@@ -32,7 +32,7 @@ Route::post('questions/{id}/update', 'QuestionController@update')->name('questio
 Route::get('/',  'QuizController@indexPublished');
 
 Route::resource('quizzes', 'QuizController');
-Route::get('quizzes/', 'QuizController@index')->name('quizzes.index');
+// Route::get('quizzes/', 'QuizController@index')->name('quizzes.index');
 Route::get('quizzes/{quiz}/show_topic', 'QuizController@editTopic')->name('quizzes.showTopic');
 Route::post('quizzes/{quiz}/update_topic', 'QuizController@updateTopic')->name('quizzes.updateTopic');
 Route::post('quizzes/{id}/update', 'QuizController@update')->name('quizzes.updatePost');
