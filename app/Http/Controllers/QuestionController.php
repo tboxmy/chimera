@@ -141,8 +141,7 @@ class QuestionController extends Controller
 
         $validatedData = $request->validate([
             'question_name' => 'required',
-            'description' => 'required',
-            'type' => 'required',
+            'description' => 'required',            
             'image1' => 'image|max:2048'
         ]);        
 
@@ -157,10 +156,7 @@ class QuestionController extends Controller
             $somename = basename( $request->file('image1')->getClientOriginalName(), '.'.$request->file('image1')->getClientOriginalExtension());        
             $image_file = $request->file('image1')
             ->move(public_path('temp'),time() .'-'. $request->file('image1')
-            ->getClientOriginalName());
-
-        // $image = Question::make($image_file);
-        
+            ->getClientOriginalName());        
 
         }
         if( isset($image_file) ){
