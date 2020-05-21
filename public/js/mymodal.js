@@ -10,7 +10,7 @@
                         $('#myModalview').addClass('modalhidden');
                     console.log('button pressed');
                     var resultSession = resetUserQuiz(1);
-                    window.alert("modal exist. Rreset user score done.");  
+                    window.alert("modal exist. Reset user score done.");  
 
                 }
             }

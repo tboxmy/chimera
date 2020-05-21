@@ -145,13 +145,13 @@ class TopicController extends Controller
     public function show(Topic $topic)
     {
         //
-        $questions = Question::where('topic_id','=',$topic->id)->get();             
+        $questions = Question::where('topic_id','=',$topic->id)->orderBy('position','ASC')->orderBy('id','ASC')->get();             
         return view('topics.show',compact('topic','questions'));        
     }
     public function showPlay($quiz_id, Topic $topic, $current)
     {
         //
-        $questions = Question::where('topic_id','=',$topic->id)->get();
+        $questions = Question::where('topic_id','=',$topic->id)->orderBy('position','ASC')->orderBy('id','ASC')->get(); 
         $totalQuestions = count($questions);
         $question = $questions[$current];
         if($question->type == 'truefalse'){

@@ -27,7 +27,9 @@
 
       <div class="col-lg-5 col-md-8 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+        <iframe height="300" src="https://www.youtube.com/embed/CbyJ9Gp-mEA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+          <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
           <div class="card-body">
             <h4 class="card-title">News</h4>
             <p class="card-text">The latest project happenings.</p>
@@ -42,7 +44,7 @@
         <div class="card h-100">          
           <div class="card-body">
             <h4 class="card-title">List of available quizzes</h4>
-            <p class="card-text">List open quizzes here.</p>
+            <p class="card-text">List open quizzes here.xxx</p>
 			<div class="links">
             
             @if(Auth::user()->hasRole('teacher'))
